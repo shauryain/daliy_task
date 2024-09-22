@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-7+g^io+^ghj=%e@ar)r+bhl7#v)nk28$d06$b$$@dr$78g@^or
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['situ1.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 
@@ -53,10 +53,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'todo.urls'
 
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'Templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,14 +80,14 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # Use os.path.join
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
